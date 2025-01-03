@@ -16,6 +16,8 @@ const Login = () => {
             const response = await axios.post('http://localhost:8080/login', { email, password });
 
             if (response.data.success) {
+              // console.log(response);
+              
                 // Assume the response contains both the user id and the JWT token
                 const { user, token } = response.data;
 
@@ -25,7 +27,13 @@ const Login = () => {
                 localStorage.setItem('userId', user.id); // Storing the userId for navigation or other actions
                 
                 // Redirect to dashboard after successful login
-                navigate(`/create-prediction/${response.data.user.id}`, { state: { userId: response.data.user.id } });
+                navigate(`/create-prediction/${response.data.user.id}`, 
+                  { 
+                    state: { 
+                      email: response.data.user.email,
+                      username: response.data.user.username
+                    } 
+                  });
             } else {
                 alert('Login failed. Please check your credentials.');
             }

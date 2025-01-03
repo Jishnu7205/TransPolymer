@@ -21,7 +21,14 @@ const Signup = () => {
             localStorage.setItem('userId', response.data.user.id);
 
             // Navigate to prediction page after successful signup
-            navigate(`/create-prediction/${response.data.user.id}`);
+            navigate(`/create-prediction/${response.data.user.id}`,
+                { 
+                    state: { 
+                      email: response.data.user.email,
+                      username: response.data.user.username
+                    } 
+                }
+            );
         } catch (err) {
             alert(err.response.data.error);
         }

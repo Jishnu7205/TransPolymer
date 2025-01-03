@@ -1,0 +1,242 @@
+/* General Page Styling */
+.prediction-page {
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Header */
+.prediction-page h1 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+/* User Info Section */
+.user-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-details {
+    flex-grow: 1;
+    margin-left: 10px;
+    text-align: left;
+}
+
+.user-details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.logout-button {
+    flex-shrink: 0;
+    background-color: #ff5733;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.logout-button:hover {
+    background-color: #e74c3c;
+}
+
+/* Form Container */
+.form-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 0 10px; /* Add padding for smaller screens */
+}
+
+.prediction-form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.prediction-form textarea {
+    width: 100%;
+    height: 150px;
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: none;
+}
+
+.prediction-form button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width for smaller screens */
+}
+
+
+/* Prediction Result Box */
+.prediction-result {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prediction-result h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.prediction-result p {
+    font-size: 16px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Predictions List */
+.predictions-list {
+    margin-top: 30px;
+    padding: 0 10px; /* Add padding for smaller screens */
+}
+
+.predictions-list ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.predictions-list li {
+    background: white;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+/* Visualize Button */
+.visualize-button {
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%; /* Full width for small screens */
+}
+
+.visualize-button:hover {
+    background-color: #ff5733;
+}
+
+/* Modal Styles */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px; /* Add padding for smaller screens */
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .user-info {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start;
+    }
+
+    .logout-button {
+        align-self: flex-end;
+    }
+
+    .prediction-form {
+        padding: 15px;
+    }
+
+    .prediction-form textarea {
+        height: 120px;
+    }
+
+    .predictions-list ul {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    .predictions-list li {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .prediction-page h1 {
+        font-size: 1.5em;
+    }
+
+    .prediction-form textarea {
+        height: 100px;
+    }
+
+    .visualize-button {
+        font-size: 14px;
+    }
+}
+

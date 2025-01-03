@@ -13,10 +13,35 @@ module.exports.predict = async (req, res, next) => {
             return next(new ExpressError(400, 'User ID and question are required.'));
         }
 
-
+        const smile = [question];
+        // console.log(smile);
+        
+        
         // Send the input to the Kaggle notebook
-        // const response = await axios.post("https://2853-34-151-69-137.ngrok-free.app/predict", { text: question });
+        const response = await axios.post("https://6bc8-35-223-83-8.ngrok-free.app/predict", { smiles: smile}, {
+            headers: {
+                'Content-Type': 'application/json',  // Ensure that we are sending JSON data
+            }
+        });
+        // console.log(response.data.predictions);
+        let properties = {
+            property1: response.data.predictions[0].predicted_properties[0],
+            property2: response.data.predictions[0].predicted_properties[1],
+            property3: response.data.predictions[0].predicted_properties[2],
+            smiles: response.data.predictions[0].smiles,
+        }
+        let propertiesString = `
+Property 1: ${properties.property1}
+Property 2: ${properties.property2}
+Property 3: ${properties.property3}
+SMILES: ${properties.smiles}
+            `;
+        // console.log(propertiesString);
 
+        // response.data.predictions = {
+        //     predicted_properties: [ 0.7618849873542786, -0.9633486270904541, -0.693462610244751 ],
+        //     smiles: 'CCO'
+        // }
         // Get the prediction from the Kaggle notebook's response
         // const prediction = response.data.prediction;
         // console.log(response.data);
@@ -40,7 +65,7 @@ module.exports.predict = async (req, res, next) => {
         const newPrediction = new Prediction({
             user: userId,  // Associating the prediction with the user
             question: question,
-            answer: generatedAnswer,
+            answer: propertiesString,
         });
 
         // Save the prediction
@@ -52,7 +77,7 @@ module.exports.predict = async (req, res, next) => {
             prediction: {
                 user: userId,
                 question: question,
-                answer: generatedAnswer,
+                answer: propertiesString,
             },
         });
     } catch (err) {
