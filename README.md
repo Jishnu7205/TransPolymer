@@ -1,7 +1,7 @@
 # TRANSPOLYMER
 
 <p align="center">
-  <img alt="last-commit" src="https://img.shields.io/github/last-commit/Jishnu7205/TransPolymer?style=flat&logo=git&logoColor=white&color=0080ff">
+ 
   <img alt="repo-top-language" src="https://img.shields.io/github/languages/top/Jishnu7205/TransPolymer?style=flat&color=0080ff">
   <img alt="repo-language-count" src="https://img.shields.io/github/languages/count/Jishnu7205/TransPolymer?style=flat&color=0080ff">
 </p>
